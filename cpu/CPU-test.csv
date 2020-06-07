@@ -1,0 +1,397 @@
+Detected 12 cores in 1 packages
+
+Core energy units: a1003
+Time_unit:10, Energy_unit: 16, Power_unit: 3
+Time_unit:0.000976562, Energy_unit: 1.52588e-05, Power_unit: 0.125
+Core 0, energy used: 0.111542W, Package: 6.21872W
+Core 1, energy used: 0.0146484W, Package: 6.21872W
+Core 2, energy used: 0.0062561W, Package: 6.21872W
+Core 3, energy used: 0.0120544W, Package: 6.21872W
+Core 4, energy used: 0.0537109W, Package: 6.21872W
+Core 5, energy used: 0.106812W, Package: 6.21872W
+Core sum: 0.305023W, Time: 0.101122
+Core 0, energy used: 0.0219727W, Package: 5.9964W
+Core 1, energy used: 0.0143433W, Package: 5.9964W
+Core 2, energy used: 0.00808716W, Package: 5.9964W
+Core 3, energy used: 0.0117493W, Package: 5.9964W
+Core 4, energy used: 0.00228882W, Package: 5.9964W
+Core 5, energy used: 0.101013W, Package: 5.9964W
+Core sum: 0.159454W, Time: 0.201726
+Core 0, energy used: 0.0193787W, Package: 4.60098W
+Core 1, energy used: 0.0157166W, Package: 4.60098W
+Core 2, energy used: 0.00961304W, Package: 4.60098W
+Core 3, energy used: 0.012207W, Package: 4.60098W
+Core 4, energy used: 0.0062561W, Package: 4.60098W
+Core 5, energy used: 0.00671387W, Package: 4.60098W
+Core sum: 0.0698853W, Time: 0.302830
+Core 0, energy used: 0.0335693W, Package: 5.36026W
+Core 1, energy used: 0.0108337W, Package: 5.36026W
+Core 2, energy used: 0.0114441W, Package: 5.36026W
+Core 3, energy used: 0.0143433W, Package: 4.79538W
+Core 4, energy used: 0.00564575W, Package: 4.79538W
+Core 5, energy used: 0.00518799W, Package: 4.79538W
+Core sum: 0.0810242W, Time: 0.404136
+Core 0, energy used: 0.0495911W, Package: 6.04294W
+Core 1, energy used: 0.0196838W, Package: 6.04294W
+Core 2, energy used: 0.0166321W, Package: 6.04294W
+Core 3, energy used: 0.0172424W, Package: 6.04294W
+Core 4, energy used: 0.00869751W, Package: 6.04294W
+Core 5, energy used: 0.00915527W, Package: 6.37894W
+Core sum: 0.121002W, Time: 0.505465
+Core 0, energy used: 0.0845337W, Package: 6.08582W
+Core 1, energy used: 0.00564575W, Package: 6.08582W
+Core 2, energy used: 0.0141907W, Package: 6.08582W
+Core 3, energy used: 0.080719W, Package: 6.08582W
+Core 4, energy used: 0.00595093W, Package: 6.08582W
+Core 5, energy used: 0.037384W, Package: 6.08582W
+Core sum: 0.228424W, Time: 0.606296
+Core 0, energy used: 0.0630188W, Package: 5.48676W
+Core 1, energy used: 0.0132751W, Package: 5.48676W
+Core 2, energy used: 0.0126648W, Package: 5.48676W
+Core 3, energy used: 0.0154114W, Package: 5.48676W
+Core 4, energy used: 0.00595093W, Package: 5.48676W
+Core 5, energy used: 0.00579834W, Package: 5.36331W
+Core sum: 0.116119W, Time: 0.707250
+Core 0, energy used: 0.0613403W, Package: 5.35172W
+Core 1, energy used: 0.0135803W, Package: 5.35172W
+Core 2, energy used: 0.0160217W, Package: 5.35172W
+Core 3, energy used: 0.0202942W, Package: 5.47501W
+Core 4, energy used: 0.00839233W, Package: 5.47501W
+Core 5, energy used: 0.00793457W, Package: 5.47501W
+Core sum: 0.127563W, Time: 0.808288
+Core 0, energy used: 0.146484W, Package: 6.06369W
+Core 1, energy used: 0.0189209W, Package: 6.06369W
+Core 2, energy used: 0.0213623W, Package: 6.06369W
+Core 3, energy used: 0.0198364W, Package: 6.06369W
+Core 4, energy used: 0.00854492W, Package: 6.06369W
+Core 5, energy used: 0.00869751W, Package: 6.06369W
+Core sum: 0.223846W, Time: 0.909151
+Core 0, energy used: 0.0602722W, Package: 5.03555W
+Core 1, energy used: 0.00747681W, Package: 5.03555W
+Core 2, energy used: 0.0137329W, Package: 5.03555W
+Core 3, energy used: 0.01297W, Package: 5.03555W
+Core 4, energy used: 0.00610352W, Package: 5.03555W
+Core 5, energy used: 0.00640869W, Package: 5.03555W
+Core sum: 0.106964W, Time: 1.010242
+Core 0, energy used: 0.0770569W, Package: 5.56686W
+Core 1, energy used: 0.00671387W, Package: 5.44861W
+Core 2, energy used: 0.010376W, Package: 5.44861W
+Core 3, energy used: 0.0100708W, Package: 5.44861W
+Core 4, energy used: 0.0115967W, Package: 5.44861W
+Core 5, energy used: 0.00320435W, Package: 5.44861W
+Core sum: 0.119019W, Time: 1.111385
+Core 0, energy used: 0.088501W, Package: 5.47028W
+Core 1, energy used: 0.00839233W, Package: 5.34698W
+Core 2, energy used: 0.01297W, Package: 5.34698W
+Core 3, energy used: 0.0273132W, Package: 5.34698W
+Core 4, energy used: 0.0341797W, Package: 5.34698W
+Core 5, energy used: 0.0193787W, Package: 5.34698W
+Core sum: 0.190735W, Time: 1.212617
+Core 0, energy used: 0.160065W, Package: 6.25061W
+Core 1, energy used: 0.0126648W, Package: 6.13266W
+Core 2, energy used: 0.0186157W, Package: 6.13266W
+Core 3, energy used: 0.00839233W, Package: 6.13266W
+Core 4, energy used: 0.0012207W, Package: 6.13266W
+Core 5, energy used: 0.0012207W, Package: 6.13266W
+Core sum: 0.202179W, Time: 1.313475
+Core 0, energy used: 0.0949097W, Package: 5.76202W
+Core 1, energy used: 0.00564575W, Package: 5.76202W
+Core 2, energy used: 0.010376W, Package: 5.76202W
+Core 3, energy used: 0.0157166W, Package: 6.06232W
+Core 4, energy used: 0.00274658W, Package: 6.06232W
+Core 5, energy used: 0.00274658W, Package: 6.06232W
+Core sum: 0.132141W, Time: 1.414512
+Core 0, energy used: 0.0506592W, Package: 4.66019W
+Core 1, energy used: 0.0186157W, Package: 4.66019W
+Core 2, energy used: 0.0134277W, Package: 4.66019W
+Core 3, energy used: 0.0140381W, Package: 4.66019W
+Core 4, energy used: 0.00671387W, Package: 4.66019W
+Core 5, energy used: 0.00671387W, Package: 4.66019W
+Core sum: 0.110168W, Time: 1.515853
+Core 0, energy used: 0.0204468W, Package: 4.16779W
+Core 1, energy used: 0.00961304W, Package: 4.16779W
+Core 2, energy used: 0.0140381W, Package: 4.16779W
+Core 3, energy used: 0.0112915W, Package: 3.86749W
+Core 4, energy used: 0.00411987W, Package: 3.86749W
+Core 5, energy used: 0.00411987W, Package: 3.86749W
+Core sum: 0.0636292W, Time: 1.617219
+Core 0, energy used: 0.166016W, Package: 6.25641W
+Core 1, energy used: 0.00976562W, Package: 6.25641W
+Core 2, energy used: 0.010376W, Package: 6.25641W
+Core 3, energy used: 0.0137329W, Package: 6.25641W
+Core 4, energy used: 0.00518799W, Package: 6.25641W
+Core 5, energy used: 0.00335693W, Package: 6.13266W
+Core sum: 0.208435W, Time: 1.717933
+Core 0, energy used: 0.329742W, Package: 7.42935W
+Core 1, energy used: 0.0572205W, Package: 7.42935W
+Core 2, energy used: 0.0297546W, Package: 7.42935W
+Core 3, energy used: 0.0735474W, Package: 7.42935W
+Core 4, energy used: 0.0804138W, Package: 7.42935W
+Core 5, energy used: 0.343933W, Package: 7.42935W
+Core sum: 0.914612W, Time: 1.818652
+Core 0, energy used: 0.166779W, Package: 6.35162W
+Core 1, energy used: 0.0309753W, Package: 6.35162W
+Core 2, energy used: 0.0302124W, Package: 6.35162W
+Core 3, energy used: 0.0256348W, Package: 6.35162W
+Core 4, energy used: 0.00946045W, Package: 6.35162W
+Core 5, energy used: 0.0088501W, Package: 6.35162W
+Core sum: 0.271912W, Time: 1.919499
+Core 0, energy used: 0.155182W, Package: 6.12305W
+Core 1, energy used: 0.0111389W, Package: 6.12305W
+Core 2, energy used: 0.0115967W, Package: 6.12305W
+Core 3, energy used: 0.0149536W, Package: 6.12305W
+Core 4, energy used: 0.00366211W, Package: 6.12305W
+Core 5, energy used: 0.0038147W, Package: 6.12305W
+Core sum: 0.200348W, Time: 2.020194
+Core 0, energy used: 0.179138W, Package: 6.55029W
+Core 1, energy used: 0.0270081W, Package: 6.55029W
+Core 2, energy used: 0.00793457W, Package: 6.55029W
+Core 3, energy used: 0.0115967W, Package: 6.42334W
+Core 4, energy used: 0.00793457W, Package: 6.42334W
+Core 5, energy used: 0.0444031W, Package: 6.42334W
+Core sum: 0.278015W, Time: 2.120978
+Core 0, energy used: 0.175781W, Package: 6.37024W
+Core 1, energy used: 0.0132751W, Package: 6.37024W
+Core 2, energy used: 0.00869751W, Package: 6.37024W
+Core 3, energy used: 0.0111389W, Package: 6.37024W
+Core 4, energy used: 0.00183105W, Package: 6.37024W
+Core 5, energy used: 0.00167847W, Package: 6.37024W
+Core sum: 0.212402W, Time: 2.221707
+Core 0, energy used: 0.149384W, Package: 6.08261W
+Core 1, energy used: 0.0114441W, Package: 6.08261W
+Core 2, energy used: 0.0112915W, Package: 6.08261W
+Core 3, energy used: 0.00961304W, Package: 6.08261W
+Core 4, energy used: 0.00152588W, Package: 6.08261W
+Core 5, energy used: 0.00137329W, Package: 6.08261W
+Core sum: 0.184631W, Time: 2.322499
+Core 0, energy used: 0.149078W, Package: 6.15753W
+Core 1, energy used: 0.0186157W, Package: 6.15753W
+Core 2, energy used: 0.00900269W, Package: 6.15753W
+Core 3, energy used: 0.0276184W, Package: 6.15753W
+Core 4, energy used: 0.0341797W, Package: 6.15753W
+Core 5, energy used: 0.0219727W, Package: 6.15753W
+Core sum: 0.260468W, Time: 2.423076
+Core 0, energy used: 0.105286W, Package: 6.07956W
+Core 1, energy used: 0.00640869W, Package: 6.07956W
+Core 2, energy used: 0.00595093W, Package: 6.07956W
+Core 3, energy used: 0.0088501W, Package: 6.07956W
+Core 4, energy used: 0.00137329W, Package: 6.07956W
+Core 5, energy used: 0.00137329W, Package: 6.07956W
+Core sum: 0.129242W, Time: 2.523811
+Core 0, energy used: 0.04776W, Package: 5.5983W
+Core 1, energy used: 0.0154114W, Package: 5.5983W
+Core 2, energy used: 0.0184631W, Package: 5.5983W
+Core 3, energy used: 0.0114441W, Package: 5.47363W
+Core 4, energy used: 0.0038147W, Package: 5.47363W
+Core 5, energy used: 0.0038147W, Package: 5.47363W
+Core sum: 0.100708W, Time: 2.624923
+Core 0, energy used: 0.0115967W, Package: 4.95895W
+Core 1, energy used: 0.0186157W, Package: 4.95895W
+Core 2, energy used: 0.0271606W, Package: 4.95895W
+Core 3, energy used: 0.015564W, Package: 4.95895W
+Core 4, energy used: 0.00839233W, Package: 4.95895W
+Core 5, energy used: 0.00900269W, Package: 4.61838W
+Core sum: 0.090332W, Time: 2.726294
+Core 0, energy used: 0.00762939W, Package: 4.68521W
+Core 1, energy used: 0.0135803W, Package: 4.68521W
+Core 2, energy used: 0.0196838W, Package: 4.68521W
+Core 3, energy used: 0.0112915W, Package: 4.35013W
+Core 4, energy used: 0.00762939W, Package: 4.35013W
+Core 5, energy used: 0.00564575W, Package: 4.35013W
+Core sum: 0.0654602W, Time: 2.827614
+Core 0, energy used: 0.0234985W, Package: 5.21072W
+Core 1, energy used: 0.0538635W, Package: 5.21072W
+Core 2, energy used: 0.0331116W, Package: 5.21072W
+Core 3, energy used: 0.0238037W, Package: 5.21072W
+Core 4, energy used: 0.0138855W, Package: 5.21072W
+Core 5, energy used: 0.0167847W, Package: 5.08698W
+Core sum: 0.164948W, Time: 2.928738
+Core 0, energy used: 0.00900269W, Package: 5.72281W
+Core 1, energy used: 0.0532532W, Package: 5.72281W
+Core 2, energy used: 0.0212097W, Package: 5.72281W
+Core 3, energy used: 0.027771W, Package: 5.72281W
+Core 4, energy used: 0.0346375W, Package: 5.72281W
+Core 5, energy used: 0.0231934W, Package: 5.59967W
+Core sum: 0.169067W, Time: 3.029478
+Core 0, energy used: 0.00640869W, Package: 4.85062W
+Core 1, energy used: 0.0376892W, Package: 4.85062W
+Core 2, energy used: 0.0213623W, Package: 4.85062W
+Core 3, energy used: 0.0109863W, Package: 5.5043W
+Core 4, energy used: 0.0163269W, Package: 5.5043W
+Core 5, energy used: 0.00610352W, Package: 5.5043W
+Core sum: 0.098877W, Time: 3.130799
+Core 0, energy used: 0.0088501W, Package: 5.05493W
+Core 1, energy used: 0.0273132W, Package: 5.05493W
+Core 2, energy used: 0.0236511W, Package: 5.05493W
+Core 3, energy used: 0.0140381W, Package: 5.05493W
+Core 4, energy used: 0.00701904W, Package: 5.05493W
+Core 5, energy used: 0.00701904W, Package: 5.05493W
+Core sum: 0.0878906W, Time: 3.232135
+Core 0, energy used: 0.00579834W, Package: 4.5076W
+Core 1, energy used: 0.0437927W, Package: 4.5076W
+Core 2, energy used: 0.0222778W, Package: 4.5076W
+Core 3, energy used: 0.0138855W, Package: 4.5076W
+Core 4, energy used: 0.0050354W, Package: 4.20731W
+Core 5, energy used: 0.00518799W, Package: 4.20731W
+Core sum: 0.0959778W, Time: 3.333438
+Core 0, energy used: 0.00579834W, Package: 5.76874W
+Core 1, energy used: 0.0679016W, Package: 5.76874W
+Core 2, energy used: 0.019989W, Package: 5.76874W
+Core 3, energy used: 0.0141907W, Package: 5.4686W
+Core 4, energy used: 0.00518799W, Package: 5.4686W
+Core 5, energy used: 0.00518799W, Package: 5.4686W
+Core sum: 0.118256W, Time: 3.434444
+Core 0, energy used: 0.0227356W, Package: 4.70703W
+Core 1, energy used: 0.00976562W, Package: 4.70703W
+Core 2, energy used: 0.0244141W, Package: 4.70703W
+Core 3, energy used: 0.0169373W, Package: 5.18356W
+Core 4, energy used: 0.00671387W, Package: 5.18356W
+Core 5, energy used: 0.00656128W, Package: 5.18356W
+Core sum: 0.0871277W, Time: 3.535513
+Core 0, energy used: 0.0161743W, Package: 4.20059W
+Core 1, energy used: 0.0144958W, Package: 4.20059W
+Core 2, energy used: 0.0297546W, Package: 4.20059W
+Core 3, energy used: 0.0297546W, Package: 5.42465W
+Core 4, energy used: 0.035553W, Package: 5.42465W
+Core 5, energy used: 0.0241089W, Package: 5.42465W
+Core sum: 0.149841W, Time: 3.636841
+Core 0, energy used: 0.067749W, Package: 4.8671W
+Core 1, energy used: 0.0137329W, Package: 4.8671W
+Core 2, energy used: 0.0260925W, Package: 4.8671W
+Core 3, energy used: 0.0119019W, Package: 4.8671W
+Core 4, energy used: 0.00579834W, Package: 4.8671W
+Core 5, energy used: 0.00595093W, Package: 4.44748W
+Core sum: 0.131226W, Time: 3.738209
+Core 0, energy used: 0.147705W, Package: 6.53519W
+Core 1, energy used: 0.0088501W, Package: 6.53519W
+Core 2, energy used: 0.0546265W, Package: 6.53519W
+Core 3, energy used: 0.0126648W, Package: 6.53519W
+Core 4, energy used: 0.00289917W, Package: 6.14609W
+Core 5, energy used: 0.00152588W, Package: 6.14609W
+Core sum: 0.228271W, Time: 3.839211
+Core 0, energy used: 0.157776W, Package: 6.14029W
+Core 1, energy used: 0.0112915W, Package: 6.14029W
+Core 2, energy used: 0.018158W, Package: 6.14029W
+Core 3, energy used: 0.018158W, Package: 6.14029W
+Core 4, energy used: 0.00534058W, Package: 6.14029W
+Core 5, energy used: 0.00946045W, Package: 6.14029W
+Core sum: 0.220184W, Time: 3.939714
+Core 0, energy used: 0.15686W, Package: 6.22208W
+Core 1, energy used: 0.0131226W, Package: 6.22208W
+Core 2, energy used: 0.0158691W, Package: 6.22208W
+Core 3, energy used: 0.0134277W, Package: 6.22208W
+Core 4, energy used: 0.00274658W, Package: 6.22208W
+Core 5, energy used: 0.00274658W, Package: 6.22208W
+Core sum: 0.204773W, Time: 4.040479
+Core 0, energy used: 0.108795W, Package: 6.04813W
+Core 1, energy used: 0.0115967W, Package: 6.04813W
+Core 2, energy used: 0.0152588W, Package: 6.04813W
+Core 3, energy used: 0.0108337W, Package: 6.04813W
+Core 4, energy used: 0.00778198W, Package: 6.04813W
+Core 5, energy used: 0.00137329W, Package: 6.04813W
+Core sum: 0.15564W, Time: 4.141201
+Core 0, energy used: 0.106659W, Package: 6.1795W
+Core 1, energy used: 0.00717163W, Package: 6.1795W
+Core 2, energy used: 0.0201416W, Package: 6.06125W
+Core 3, energy used: 0.0256348W, Package: 6.06125W
+Core 4, energy used: 0.0265503W, Package: 6.06125W
+Core 5, energy used: 0.0189209W, Package: 6.06125W
+Core sum: 0.205078W, Time: 4.242049
+Core 0, energy used: 0.0315857W, Package: 5.3894W
+Core 1, energy used: 0.0190735W, Package: 5.3894W
+Core 2, energy used: 0.0234985W, Package: 5.3894W
+Core 3, energy used: 0.0152588W, Package: 5.0531W
+Core 4, energy used: 0.00656128W, Package: 5.0531W
+Core 5, energy used: 0.00656128W, Package: 5.0531W
+Core sum: 0.102539W, Time: 4.343164
+Core 0, energy used: 0.045929W, Package: 5.63904W
+Core 1, energy used: 0.0238037W, Package: 5.63904W
+Core 2, energy used: 0.0189209W, Package: 5.63904W
+Core 3, energy used: 0.0131226W, Package: 5.63904W
+Core 4, energy used: 0.00350952W, Package: 5.33615W
+Core 5, energy used: 0.00350952W, Package: 5.33615W
+Core sum: 0.108795W, Time: 4.444295
+Core 0, energy used: 0.0175476W, Package: 4.94034W
+Core 1, energy used: 0.0178528W, Package: 4.94034W
+Core 2, energy used: 0.0219727W, Package: 4.94034W
+Core 3, energy used: 0.0157166W, Package: 4.94034W
+Core 4, energy used: 0.00671387W, Package: 4.94034W
+Core 5, energy used: 0.00656128W, Package: 5.06363W
+Core sum: 0.0863647W, Time: 4.545237
+Core 0, energy used: 0.0163269W, Package: 5.01556W
+Core 1, energy used: 0.0134277W, Package: 5.01556W
+Core 2, energy used: 0.0288391W, Package: 5.01556W
+Core 3, energy used: 0.0137329W, Package: 5.3157W
+Core 4, energy used: 0.00823975W, Package: 5.3157W
+Core 5, energy used: 0.00808716W, Package: 5.3157W
+Core sum: 0.0886536W, Time: 4.646563
+Core 0, energy used: 0.0166321W, Package: 5.41458W
+Core 1, energy used: 0.010376W, Package: 5.41458W
+Core 2, energy used: 0.0582886W, Package: 5.41458W
+Core 3, energy used: 0.0172424W, Package: 5.62622W
+Core 4, energy used: 0.00640869W, Package: 5.62622W
+Core 5, energy used: 0.00518799W, Package: 5.62622W
+Core sum: 0.114136W, Time: 4.747698
+Core 0, energy used: 0.0108337W, Package: 5.55679W
+Core 1, energy used: 0.0111389W, Package: 5.55679W
+Core 2, energy used: 0.0535583W, Package: 5.55679W
+Core 3, energy used: 0.0270081W, Package: 5.55679W
+Core 4, energy used: 0.0332642W, Package: 5.55679W
+Core 5, energy used: 0.0190735W, Package: 5.681W
+Core sum: 0.154877W, Time: 4.848691
+Core 0, energy used: 0.0137329W, Package: 5.62103W
+Core 1, energy used: 0.00946045W, Package: 5.62103W
+Core 2, energy used: 0.0816345W, Package: 5.62103W
+Core 3, energy used: 0.0154114W, Package: 5.62103W
+Core 4, energy used: 0.00823975W, Package: 5.62103W
+Core 5, energy used: 0.00335693W, Package: 5.62103W
+Core sum: 0.131836W, Time: 4.949492
+Core 0, energy used: 0.0141907W, Package: 6.10321W
+Core 1, energy used: 0.0111389W, Package: 6.10321W
+Core 2, energy used: 0.0907898W, Package: 6.10321W
+Core 3, energy used: 0.0227356W, Package: 6.10321W
+Core 4, energy used: 0.00976562W, Package: 6.10321W
+Core 5, energy used: 0.00610352W, Package: 5.97977W
+Core sum: 0.154724W, Time: 5.050208
+Core 0, energy used: 0.0117493W, Package: 5.12161W
+Core 1, energy used: 0.00976562W, Package: 5.12161W
+Core 2, energy used: 0.0360107W, Package: 5.12161W
+Core 3, energy used: 0.0161743W, Package: 5.33371W
+Core 4, energy used: 0.0170898W, Package: 5.33371W
+Core 5, energy used: 0.00595093W, Package: 5.33371W
+Core sum: 0.0967407W, Time: 5.151479
+Core 0, energy used: 0.015564W, Package: 5.83145W
+Core 1, energy used: 0.0160217W, Package: 5.83145W
+Core 2, energy used: 0.0419617W, Package: 5.83145W
+Core 3, energy used: 0.0473022W, Package: 5.95047W
+Core 4, energy used: 0.0282288W, Package: 5.95047W
+Core 5, energy used: 0.0314331W, Package: 5.95047W
+Core sum: 0.180511W, Time: 5.252493
+Core 0, energy used: 0.039978W, Package: 4.53918W
+Core 1, energy used: 0.00762939W, Package: 4.53918W
+Core 2, energy used: 0.0486755W, Package: 4.53918W
+Core 3, energy used: 0.0108337W, Package: 4.53918W
+Core 4, energy used: 0.00473022W, Package: 4.53918W
+Core 5, energy used: 0.00518799W, Package: 4.953W
+Core sum: 0.117035W, Time: 5.353624
+Core 0, energy used: 0.0204468W, Package: 5.42252W
+Core 1, energy used: 0.0282288W, Package: 5.42252W
+Core 2, energy used: 0.0532532W, Package: 5.42252W
+Core 3, energy used: 0.0167847W, Package: 5.91934W
+Core 4, energy used: 0.00823975W, Package: 5.91934W
+Core 5, energy used: 0.00808716W, Package: 5.91934W
+Core sum: 0.13504W, Time: 5.454994
+Core 0, energy used: 0.00869751W, Package: 4.89685W
+Core 1, energy used: 0.0439453W, Package: 4.89685W
+Core 2, energy used: 0.0224304W, Package: 4.89685W
+Core 3, energy used: 0.0106812W, Package: 4.89685W
+Core 4, energy used: 0.00656128W, Package: 4.89685W
+Core 5, energy used: 0.0050354W, Package: 4.89685W
+Core sum: 0.0973511W, Time: 5.555978
+Core 0, energy used: 0.014801W, Package: 5.24078W
+Core 1, energy used: 0.0514221W, Package: 5.24078W
+Core 2, energy used: 0.035553W, Package: 5.24078W
+Core 3, energy used: 0.0167847W, Package: 5.24078W
+Core 4, energy used: 0.0125122W, Package: 5.24078W
+Core 5, energy used: 0.0120544W, Package: 5.24078W
+Core sum: 0.143127W, Time: 5.656567

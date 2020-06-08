@@ -31,6 +31,8 @@
   Author: Martin Burtscher (in collaboration with Ivan Zecena and Ziliang Zong)
 */
 
+//compile 
+//nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFIle -L/usr/lib64/nvidia -lnvidia-ml
 
 #include <stdio.h>
 #include <unistd.h>
@@ -43,15 +45,14 @@
 
 //#include "marcher.h"
 
-#define DEVICE 0
+#define DEVICE 1
 
-/*
 double secondsSince(struct timeval *startTime) {
     struct timeval currentTime;
     gettimeofday(&currentTime, NULL);
     return ((currentTime.tv_sec*1e6 + currentTime.tv_usec) - (startTime->tv_sec*1e6 + startTime->tv_usec)) / 1e6;
 }
-*/
+
 
 static inline double getTime()
 {
@@ -72,7 +73,8 @@ static void initAndTest(nvmlDevice_t *device)
         exit(1);
     }
 
-    result = nvmlDeviceGetHandleByIndex(DEVICE, device);
+    result = nvmlDeviceGetHandleByIndex(DEVICE, devi
+        ce);
     if (NVML_SUCCESS != result) {
         printf("failed to get handle for device: %s\n", nvmlErrorString(result));
         exit(1);
@@ -94,8 +96,8 @@ static inline void getInfo(nvmlDevice_t device, unsigned int *power, FILE* outpu
     double time_interval;
     gettimeofday(&currentTime, NULL);
     time_interval = ((currentTime.tv_sec*1e6 + currentTime.tv_usec) - (startTime->tv_sec*1e6 + startTime->tv_usec)) / 1e6;
-    //fprintf(outputFile, "%u, %f, \n", *power, secondsSince(startTime));
-    fprintf(outputFile, "%u, %f, \n", *power, time_interval);
+    fprintf(outputFile, "%u, %f, \n", *power, secondsSince(startTime));
+    //fprintf(outputFile, "%u, %f, \n", *power, time_interval);
 }
 
 static void sigterm_hdl(int sig) {

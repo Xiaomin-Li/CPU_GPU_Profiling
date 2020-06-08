@@ -10,12 +10,15 @@
 
 ### To run 
 <p> make sure mrs readable 
-  sudo modprobe msr 
+<p> sudo modprobe msr
+  
 <p> Run cpu log file seperately:
-    sudo ./cpu/cpuLogToFile [sampling interval] [filename] 
-    e.g. ./cpu/cpuLogToFile 1 test      (sampling time is 1/sec, filename is test)
+<p> sudo ./cpu/cpuLogToFile [sampling interval] [filename] 
+<p> e.g. ./cpu/cpuLogToFile 1 test      (sampling time is 1/sec, filename is test)
+
 <p> Run gpu log file seperately 
-    ./gpu/gpuToFIle [sampling interval] [filename]
-    e.g. ./gpu/gpuToFIle 1 test      (sampling time is 1/sec, filename is test)
+<p> ./gpu/gpuToFIle [sampling interval] [filename]
+<p> e.g. ./gpu/gpuToFIle 1 test      (sampling time is 1/sec, filename is test)
+
 <p> Run cpu and gpu measurement together 
-    sudo ./powerlog [sampling interval] [filename]
+<p> sudo ./powerlog [sampling interval] [filename]

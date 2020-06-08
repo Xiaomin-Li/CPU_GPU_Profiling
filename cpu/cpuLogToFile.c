@@ -202,7 +202,7 @@ int main(int argc, char **argv) {
 	char hostname[9];
 	hostname[8] = NULL;
 	gethostname(hostname, 8);
-	snprintf(filename, 512, "%sCPU-%s.csv", hostname, argv[2]);
+	snprintf(filename, 512, "%s_CPU-%s.csv", hostname, argv[2]);
 	FILE *outputFile = fopen(filename, "w");
 	if (outputFile == NULL) {
 		fprintf(stderr, "Unable to open output file.\n");

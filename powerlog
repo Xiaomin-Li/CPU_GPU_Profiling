@@ -1,4 +1,17 @@
 #!/bin/bash
-./cpu/cpuLogToFile 1 t & sleep 10; kill $!
 
-./gpu/gpuToFIle 1 t & sleep 10; kill $!
+#./cpu/cpuLogToFile 1 t & sleep 10; kill $!
+
+# ./cpu/cpuLogToFile 1 t & 
+# export cpulog_PID=$!
+
+# ./gpu/gpuToFIle 1 t &
+# export gpulog_PID=$!
+
+# sleep 10;
+# kill cpulog_PID
+# kill gpulog_PID
+
+
+trap 'kill %1' SIGINT
+./gpu/gpuToFIle $1 $2 & ./cpu/cpuLogToFile $1 $2   

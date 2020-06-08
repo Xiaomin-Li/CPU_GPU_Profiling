@@ -14,7 +14,7 @@
   
 #### Run cpu log file seperately:
 <p> sudo ./cpu/cpuLogToFile [sampling interval] [filename] 
-<p> e.g. ./cpu/cpuLogToFile 1 test      (sampling time is 1/sec, filename is test)
+<p> e.g. sudo ./cpu/cpuLogToFile 1 test      (sampling time is 1/sec, filename is test)
 
 #### Run gpu log file seperately 
 <p> ./gpu/gpuToFIle [sampling interval] [filename]
@@ -22,4 +22,4 @@
 
 #### Run cpu and gpu measurement together 
 <p> sudo ./powerlog [sampling interval] [filename]
-<p> e.g. ./powerlog 1 test         (sampling time is 1/sec, filename is test)
+<p> e.g. sudo ./powerlog 1 test         (sampling time is 1/sec, filename is test)

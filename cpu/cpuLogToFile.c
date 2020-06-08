@@ -184,6 +184,11 @@ cpuid     0 1 2 3 4 5 6 7 8 .. 15 16 .. 23 24 .. 30 31
 core_id   0 1 2 3 4 5 6 7 0 .. 7  0  .. 7  0  .. 7  0     
 */
 
+/*
+check https://superuser.com/questions/324284/what-is-meant-by-the-terms-cpu-core-die-and-package
+get more info about cpu core die and package 
+*/
+
 
 int main(int argc, char **argv) {
 	struct timeval start;
@@ -194,7 +199,10 @@ int main(int argc, char **argv) {
 	}
 	unsigned int delay_us = DELAY_UNIT / (2*atoi(argv[1]));
 	char filename[512];
-	snprintf(filename, 512, "CPU-%s.csv", argv[2]);
+	char hostname[9];
+	hostname[8] = NULL;
+	gethostname(hostname, 8);
+	snprintf(filename, 512, "%sCPU-%s.csv", hostname, argv[2]);
 	FILE *outputFile = fopen(filename, "w");
 	if (outputFile == NULL) {
 		fprintf(stderr, "Unable to open output file.\n");
@@ -243,6 +251,7 @@ int main(int argc, char **argv) {
 	//printf("Time_unit:%d, Energy_unit: %d, Power_unit: %d\n", time_unit, energy_unit, power_unit);
 	fprintf(outputFile, "Time_unit:%d, Energy_unit: %d, Power_unit: %d\n", time_unit, energy_unit, power_unit);
 	
+	//why we need to do this? 
 	time_unit_d = pow(0.5,(double)(time_unit));
 	energy_unit_d = pow(0.5,(double)(energy_unit));
 	power_unit_d = pow(0.5,(double)(power_unit));
@@ -274,16 +283,19 @@ int main(int argc, char **argv) {
 			package_delta[i] = package_raw * energy_unit_d;
 		}
 
-		double sum = 0;
+		double sum_core = 0;
+		double avg_package = 0;
 		for(int i = 0; i < total_cores/2; i++) {
-			double diff = (core_energy_delta[i] - core_energy[i])*10; 
+			double diff_core = (core_energy_delta[i] - core_energy[i])*10;
+			double diff_package = (package_delta[i]- package[i])*10; 
 			//why multiple by 10? 
-			sum += diff;
+			sum_core += diff_core;
+			avg_package += diff_package;
 			//printf("Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i])*10);
-			fprintf(outputFile, "Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i])*10);
+			fprintf(outputFile, "Core %d, energy used: %gW, Package: %gW\n", i, diff_core, diff_package);
 		}
 		//printf("Core sum: %gW, Time: %f\n", sum, secondsSince(&start));
-		fprintf(outputFile, "Core sum: %gW, Time: %f\n", sum, secondsSince(&start));
+		fprintf(outputFile, "Core sum: %gW, CPU average power: %gW, Time: %f\n", sum_core, avg_package/(total_cores/2), secondsSince(&start));
 	}
 	free(core_energy);
 	free(core_energy_delta);

@@ -33,6 +33,7 @@
 
 //compile 
 //nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFIle -L/usr/lib64/nvidia -lnvidia-ml
+//only used for rainbow-panda server which has four devices 
 
 #include <stdio.h>
 #include <unistd.h>

@@ -45,7 +45,10 @@
 
 //#include "marcher.h"
 
-#define DEVICE 1
+#define DEVICE0 0
+#define DEVICE1 1
+#define DEVICE2 2
+#define DEVICE3 3
 
 double secondsSince(struct timeval *startTime) {
     struct timeval currentTime;
@@ -61,7 +64,7 @@ static inline double getTime()
     return time.tv_sec + time.tv_usec * 0.000001;
 }
 
-static void initAndTest(nvmlDevice_t *device)
+static void initAndTest(nvmlDevice_t *device0, nvmlDevice_t *device1, nvmlDevice_t *device2, nvmlDevice_t *device3)
 {
     nvmlReturn_t result;
     nvmlMemory_t mem;
@@ -73,30 +76,80 @@ static void initAndTest(nvmlDevice_t *device)
         exit(1);
     }
 
-    result = nvmlDeviceGetHandleByIndex(DEVICE, devi
-        ce);
+    result = nvmlDeviceGetHandleByIndex(DEVICE0, device0);
     if (NVML_SUCCESS != result) {
         printf("failed to get handle for device: %s\n", nvmlErrorString(result));
         exit(1);
     }
 
-    result = nvmlDeviceGetPowerUsage(*device, &power);
+    result = nvmlDeviceGetHandleByIndex(DEVICE1, device1);
+    if (NVML_SUCCESS != result) {
+        printf("failed to get handle for device: %s\n", nvmlErrorString(result));
+        exit(1);
+    }
+
+    result = nvmlDeviceGetHandleByIndex(DEVICE2, device2);
+    if (NVML_SUCCESS != result) {
+        printf("failed to get handle for device: %s\n", nvmlErrorString(result));
+        exit(1);
+    }
+
+    result = nvmlDeviceGetHandleByIndex(DEVICE3, device3);
+    if (NVML_SUCCESS != result) {
+        printf("failed to get handle for device: %s\n", nvmlErrorString(result));
+        exit(1);
+    }
+
+    result = nvmlDeviceGetPowerUsage(*device0, &power);
+    if (NVML_SUCCESS != result) {
+        printf("failed to read power: %s\n", nvmlErrorString(result));
+        exit(1);
+    }
+
+    result = nvmlDeviceGetPowerUsage(*device1, &power);
+    if (NVML_SUCCESS != result) {
+        printf("failed to read power: %s\n", nvmlErrorString(result));
+        exit(1);
+    }
+
+    result = nvmlDeviceGetPowerUsage(*device2, &power);
+    if (NVML_SUCCESS != result) {
+        printf("failed to read power: %s\n", nvmlErrorString(result));
+        exit(1);
+    }
+
+    result = nvmlDeviceGetPowerUsage(*device3, &power);
     if (NVML_SUCCESS != result) {
         printf("failed to read power: %s\n", nvmlErrorString(result));
         exit(1);
     }
 }
 
-static inline void getInfo(nvmlDevice_t device, unsigned int *power, FILE* outputFile, struct timeval *startTime)
+static inline void getInfo(
+    nvmlDevice_t device0, nvmlDevice_t device1, nvmlDevice_t device2, nvmlDevice_t device3, 
+    unsigned int *power0, unsigned int *power1, unsigned int *power2, unsigned int *power3, 
+    FILE* outputFile, struct timeval *startTime)
 {
-    nvmlDeviceGetPowerUsage(device, power);
-    *power *= .001;
+    nvmlDeviceGetPowerUsage(device0, power0);
+    *power0 *= .001;
+
+    nvmlDeviceGetPowerUsage(device1, power1);
+    *power1 *= .001;
+
+    nvmlDeviceGetPowerUsage(device2, power2);
+    *power2 *= .001;
+
+    nvmlDeviceGetPowerUsage(device3, power3);
+    *power3 *= .001;
+
+    unsigned int total_power;
+    total_power = *power0 + *power1 + *power2 + *power3;
 
     struct timeval currentTime;
     double time_interval;
     gettimeofday(&currentTime, NULL);
     time_interval = ((currentTime.tv_sec*1e6 + currentTime.tv_usec) - (startTime->tv_sec*1e6 + startTime->tv_usec)) / 1e6;
-    fprintf(outputFile, "%u, %f, \n", *power, secondsSince(startTime));
+    fprintf(outputFile, "%u, %u, %u, %u, %u, %f, \n", *power0, *power1, *power2, *power3, total_power, secondsSince(startTime));
     //fprintf(outputFile, "%u, %f, \n", *power, time_interval);
 }
 
@@ -107,8 +160,8 @@ static void sigterm_hdl(int sig) {
 
 int main(int argc, char *argv[])
 {
-    nvmlDevice_t device;
-    unsigned int power, delay_us;
+    nvmlDevice_t device0, device1, device2, device3;
+    unsigned int power0, power1, power2, power3, delay_us;
 
     if (argc != 3 || atoi(argv[1]) <= 0) {
         fprintf(stderr, "Usage: %s [sampling rate (Hz)] [output filename]\n", argv[0]);
@@ -140,19 +193,19 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    initAndTest(&device);
+    initAndTest(&device0, &device1, &device2, &device3);
 
     // We write this 'Y' to STDOUT so master_meter will know that we're ready to start logging.
     // The master meter will block until this has been read. 
     char c = 'Y';
     write(STDOUT_FILENO, &c, 1);
 
-	fprintf(outputFile, "GPU Power (W), Time (S), \n");
+	fprintf(outputFile, "device0(W), device1(w), device2(w), device3(w), Total(w), Time(S), \n");
     // Begin power measurement.
 	struct timeval start;
 	gettimeofday(&start, NULL);
     do {
         usleep(delay_us);
-        getInfo(device, &power, outputFile, &start);
+        getInfo(device0, device1, device2, device3, &power0, &power1, &power2, &power3, outputFile, &start);
     } while(1);
 }

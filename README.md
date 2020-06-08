@@ -9,7 +9,7 @@
 <p> nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFIle -L/usr/lib64/nvidia -lnvidia-ml
 
 ### To run 
-#### make sure mrs readable 
+#### make sure msr file readable 
 <p> sudo modprobe msr
   
 #### Run cpu log file seperately:

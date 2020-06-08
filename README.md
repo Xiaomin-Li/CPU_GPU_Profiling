@@ -22,3 +22,4 @@
 
 #### Run cpu and gpu measurement together 
 <p> sudo ./powerlog [sampling interval] [filename]
+<p> e.g. ./powerlog 1 test         (sampling time is 1/sec, filename is test)

@@ -6,7 +6,7 @@
 
 ### compile gpu power log file 
 <p> cd gpu
-<p> nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFIle -L/usr/lib64/nvidia -lnvidia-ml
+<p> nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFile -L/usr/lib64/nvidia -lnvidia-ml
 
 ### To run 
 #### make sure msr file readable 

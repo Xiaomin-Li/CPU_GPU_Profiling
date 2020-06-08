@@ -286,8 +286,8 @@ int main(int argc, char **argv) {
 		double sum_core = 0;
 		double avg_package = 0;
 		for(int i = 0; i < total_cores/2; i++) {
-			double diff_core = (core_energy_delta[i] - core_energy[i])*10;
-			double diff_package = (package_delta[i]- package[i])*10; 
+			double diff_core = (core_energy_delta[i] - core_energy[i]);
+			double diff_package = (package_delta[i]- package[i]); 
 			//why multiple by 10? 
 			sum_core += diff_core;
 			avg_package += diff_package;

@@ -1,0 +1,4 @@
+#!/bin/bash
+./cpu/cpuLogToFile 1 t & sleep 10; kill $!
+
+./gpu/gpuToFIle 1 t & sleep 10; kill $!

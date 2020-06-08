@@ -288,7 +288,6 @@ int main(int argc, char **argv) {
 		for(int i = 0; i < total_cores/2; i++) {
 			double diff_core = (core_energy_delta[i] - core_energy[i]);
 			double diff_package = (package_delta[i]- package[i]); 
-			//why multiple by 10? 
 			sum_core += diff_core;
 			avg_package += diff_package;
 			//printf("Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i])*10);

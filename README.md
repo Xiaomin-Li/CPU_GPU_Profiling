@@ -6,7 +6,7 @@
 
 ### compile gpu power log file 
 <p> cd gpu
-<p> nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFIle -L/usr/lib64/nvidia -lnvidia-ml
+<p> nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFile -L/usr/lib64/nvidia -lnvidia-ml
 
 ### To run 
 #### make sure msr file readable 
@@ -14,7 +14,7 @@
   
 #### Run cpu log file seperately:
 <p> sudo ./cpu/cpuLogToFile [sampling interval] [filename] 
-<p> e.g. ./cpu/cpuLogToFile 1 test      (sampling time is 1/sec, filename is test)
+<p> e.g. sudo ./cpu/cpuLogToFile 1 test      (sampling time is 1/sec, filename is test)
 
 #### Run gpu log file seperately 
 <p> ./gpu/gpuToFIle [sampling interval] [filename]
@@ -22,3 +22,4 @@
 
 #### Run cpu and gpu measurement together 
 <p> sudo ./powerlog [sampling interval] [filename]
+<p> e.g. sudo ./powerlog 1 test         (sampling time is 1/sec, filename is test)

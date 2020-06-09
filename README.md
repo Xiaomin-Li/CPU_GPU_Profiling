@@ -21,5 +21,5 @@
 <p> e.g. ./gpu/gpuToFIle 1 test      (sampling time is 1/sec, filename is test)
 
 #### Run cpu and gpu measurement together 
-<p> sudo ./powerlog [sampling interval] [filename]
-<p> e.g. sudo ./powerlog 1 test         (sampling time is 1/sec, filename is test)
+<p> sudo ./powerlog [sampling interval] [filename] [measuring time]
+<p> e.g. sudo ./powerlog 1 test 10      (sampling time is 1/sec, filename is test, measure for 10 seconds)

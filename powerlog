@@ -13,5 +13,19 @@
 # kill gpulog_PID
 
 
-trap 'kill %1' SIGINT
-./gpu/gpuToFIle $1 $2 & ./cpu/cpuLogToFile $1 $2   
+# trap 'kill %1' SIGINT
+# ./gpu/gpuToFIle $1 $2 & ./cpu/cpuLogToFile $1 $2   
+
+echo start measuring 
+date 
+./cpu/cpuLogToFile $1 $2 &  
+
+./gpu/gpuToFIle $1 $2 & 
+
+sleep $3
+
+sudo pkill cpuLogToFile
+sudo pkill gpuToFIle
+
+date
+echo end measuring 

@@ -197,7 +197,7 @@ int main(int argc, char **argv) {
 	if (argc != 3){
 		fprintf(stderr, "Usage: %s [sampling rate (HZ)] [output filename]\n", argv[0]);
 	}
-	unsigned int delay_us = DELAY_UNIT / (2*atoi(argv[1]));
+	unsigned int delay_us = DELAY_UNIT / atoi(argv[1]);
 	char filename[512];
 	char hostname[9];
 	hostname[8] = NULL;
@@ -260,7 +260,7 @@ int main(int argc, char **argv) {
 
 	printf("Measuring cpu power. Press Ctrl+C to stop\n");
 	while(1){
-		usleep(delay_us);
+		//usleep(delay_us);
 		//usleep(DELAY_UNIT);
 		int core_energy_raw = 0;
 		int package_raw = 0;
@@ -286,8 +286,8 @@ int main(int argc, char **argv) {
 		double sum_core = 0;
 		double avg_package = 0;
 		for(int i = 0; i < total_cores/2; i++) {
-			double diff_core = (core_energy_delta[i] - core_energy[i]);
-			double diff_package = (package_delta[i]- package[i]); 
+			double diff_core = (core_energy_delta[i] - core_energy[i]) / (1 / atoi(argv[1]));
+			double diff_package = (package_delta[i]- package[i]) / (1 / atoi(argv[1])); 
 			sum_core += diff_core;
 			avg_package += diff_package;
 			//printf("Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i])*10);

@@ -129,8 +129,11 @@ static void initAndTest(nvmlDevice_t *device0, nvmlDevice_t *device1, nvmlDevice
 static inline void getInfo(
     nvmlDevice_t device0, nvmlDevice_t device1, nvmlDevice_t device2, nvmlDevice_t device3, 
     unsigned int *power0, unsigned int *power1, unsigned int *power2, unsigned int *power3, 
+    unsigned int *temp0, unsigned int *temp1, unsigned int *temp2, unsigned int *temp3,
     FILE* outputFile, struct timeval *startTime)
 {
+    
+
     nvmlDeviceGetPowerUsage(device0, power0);
     *power0 *= .001;
 
@@ -143,6 +146,13 @@ static inline void getInfo(
     nvmlDeviceGetPowerUsage(device3, power3);
     *power3 *= .001;
 
+
+    nvmlDeviceGetTemperature(device0, NVML_TEMPERATURE_GPU, temp0);
+    nvmlDeviceGetTemperature(device1, NVML_TEMPERATURE_GPU, temp1);
+    nvmlDeviceGetTemperature(device2, NVML_TEMPERATURE_GPU, temp2);
+    nvmlDeviceGetTemperature(device3, NVML_TEMPERATURE_GPU, temp3);
+
+
     unsigned int total_power;
     total_power = *power0 + *power1 + *power2 + *power3;
 
@@ -150,7 +160,9 @@ static inline void getInfo(
     double time_interval;
     gettimeofday(&currentTime, NULL);
     time_interval = ((currentTime.tv_sec*1e6 + currentTime.tv_usec) - (startTime->tv_sec*1e6 + startTime->tv_usec)) / 1e6;
-    fprintf(outputFile, "%u, %u, %u, %u, %u, %f, \n", *power0, *power1, *power2, *power3, total_power, secondsSince(startTime));
+    fprintf(outputFile, "%u, %u, %u, %u, %u, %u, %u, %u, %u, %f, \n", 
+            *power0, *temp0, *power1, *temp1, *power2, *temp2, *power3, *temp3, 
+            total_power, secondsSince(startTime));
     //fprintf(outputFile, "%u, %f, \n", *power, time_interval);
 }
 
@@ -163,6 +175,8 @@ int main(int argc, char *argv[])
 {
     nvmlDevice_t device0, device1, device2, device3;
     unsigned int power0, power1, power2, power3, delay_us;
+    unsigned int temp0, temp1, temp2, temp3;
+
 
     if (argc != 3 || atoi(argv[1]) <= 0) {
         fprintf(stderr, "Usage: %s [sampling rate (Hz)] [output filename]\n", argv[0]);
@@ -201,12 +215,15 @@ int main(int argc, char *argv[])
     char c = 'Y';
     write(STDOUT_FILENO, &c, 1);
 
-	fprintf(outputFile, "device0(W), device1(w), device2(w), device3(w), Total(w), Time(S), \n");
+	fprintf(outputFile, "power0(W), temp0(C), power1(W), temp1(C), power2(W), temp2(C), power3(W), temp3(C), Total(w), Time(S), \n");
     // Begin power measurement.
 	struct timeval start;
 	gettimeofday(&start, NULL);
     do {
         usleep(delay_us);
-        getInfo(device0, device1, device2, device3, &power0, &power1, &power2, &power3, outputFile, &start);
+        getInfo(device0, device1, device2, device3, 
+                &power0, &power1, &power2, &power3, 
+                &temp0, &temp1, &temp2, &temp3,
+                outputFile, &start);
     } while(1);
 }

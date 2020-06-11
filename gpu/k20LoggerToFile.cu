@@ -158,7 +158,7 @@ static inline void getInfo
     nvmlDeviceGetUtilizationRates(device1, u1);
     nvmlDeviceGetUtilizationRates(device2, u2);
     nvmlDeviceGetUtilizationRates(device3, u3);
-
+    //printf("%u, %u\n", u0->gpu, u0->memory);
 
     unsigned int total_power;
     total_power = *power0 + *power1 + *power2 + *power3;
@@ -169,7 +169,7 @@ static inline void getInfo
     time_interval = ((currentTime.tv_sec*1e6 + currentTime.tv_usec) - (startTime->tv_sec*1e6 + startTime->tv_usec)) / 1e6;
     fprintf(outputFile, "%f, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u\n", 
             secondsSince(startTime), total_power, 
-            *power0, *temp0, *u0, *power1, *temp1, *u1, *power2, *temp2, *u2, *power3, *temp3, *u3 
+            *power0, *temp0, u0->gpu, *power1, *temp1, u1->gpu, *power2, *temp2, u2->gpu, *power3, *temp3, u3->gpu 
             );
 }
 

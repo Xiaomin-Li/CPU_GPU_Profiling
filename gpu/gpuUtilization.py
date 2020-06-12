@@ -1,27 +1,22 @@
-import py3nvml.nvidia_smi as smi
+# 
+import py3nvml.nvidia_smi as nvml
 import datetime  
 import time
 
-smi.nvmlInit()
-
-handle0 = smi.nvmlDeviceGetHandleByIndex(0)
-handle1 = smi.nvmlDeviceGetHandleByIndex(1)
-handle2 = smi.nvmlDeviceGetHandleByIndex(2)
-handle3 = smi.nvmlDeviceGetHandleByIndex(3)
-
-current_time = datetime.datetime.now()
-print(current_time + 'start gpu measurement')
-time_count = 0
+nvml.nvmlInit()
+num_gpus = nvml.nvmlDeviceGetCount()
+print('Number of GPUs {}'.format(num_gpus))
+print('Time, device, gpu_util %, gpu-mem %, memory used Mib/ total Mib, power current W/ limit W, temperature C')
 while True:
-    print('Time:{}s'.format(time_count))
-    res0 = smi.nvmlDeviceGetUtilizationRates(handle0)
-    res1 = smi.nvmlDeviceGetUtilizationRates(handle1)
-    res2 = smi.nvmlDeviceGetUtilizationRates(handle2)
-    res3 = smi.nvmlDeviceGetUtilizationRates(handle3)
+    for i in range(num_gpus):
+        handle = nvml.nvmlDeviceGetHandleByIndex(i)
+        util = nvml.nvmlDeviceGetUtilizationRates(handle)
+        power = nvml.nvmlDeviceGetPowerUsage(handle)
+        power *= 0.001
+        power_limit = nvml.nvmlDeviceGetPowerManagementLimit(handle)
+        power_limit *= 0.001
+        memory_info = nvml.nvmlDeviceGetMemoryInfo(handle)
+        temp = nvml.nvmlDeviceGetTemperature(handle, nvml.NVML_TEMPERATURE_GPU)
+        print('{}, gpu{}, {}%. {}%, {}Mib/{}Mib, {}W/{}W, {}C'.format(datetime.datetime.now().time(), i, util.gpu, util.memory, memory_info.used >> 20, memory_info.total >> 20, power, power_limit, temp))
 
-    print('gpu: {}%, gpu-mem: {}%'.format(res0.gpu, res0.memory))
-    print('gpu: {}%, gpu-mem: {}%'.format(res1.gpu, res1.memory))
-    print('gpu: {}%, gpu-mem: {}%'.format(res2.gpu, res2.memory))
-    print('gpu: {}%, gpu-mem: {}%'.format(res3.gpu, res3.memory))
-    time_count += 1
-    sleep(1)
+    time.sleep(1)

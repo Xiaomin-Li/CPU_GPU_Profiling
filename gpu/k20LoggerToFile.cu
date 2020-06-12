@@ -158,7 +158,6 @@ static inline void getInfo
     nvmlDeviceGetUtilizationRates(device1, u1);
     nvmlDeviceGetUtilizationRates(device2, u2);
     nvmlDeviceGetUtilizationRates(device3, u3);
-    //printf("%u, %u\n", u0->gpu, u0->memory);
 
     unsigned int total_power;
     total_power = *power0 + *power1 + *power2 + *power3;
@@ -166,6 +165,9 @@ static inline void getInfo
     struct timeval currentTime;
     double time_interval;
     gettimeofday(&currentTime, NULL);
+    //get device utilization api only support fermi and quadro architrcture cards.
+    //for panda server, it contains RTX 2080ti cards which don't have supportion.
+    //util->gpu return gpu utilization, util->memory return gpu memory utilization  
     time_interval = ((currentTime.tv_sec*1e6 + currentTime.tv_usec) - (startTime->tv_sec*1e6 + startTime->tv_usec)) / 1e6;
     fprintf(outputFile, "%f, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u, %u\n", 
             secondsSince(startTime), total_power, 

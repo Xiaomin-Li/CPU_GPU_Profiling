@@ -1,3 +1,6 @@
-import py3nvml
-num_proces = py3nvml.get_num_proces()
-print(num_proces)
+import py3nvml.nvidia_smi as smi
+smi.nvmlInit()
+handle = smi.nvmlDeviceGetHandleByIndex(0)
+
+res = smi.nvmlDeviceGetUtilizationRates(handle)
+print('gpu: {}%, gpu-mem: {}%'.format(res.gpu, res.memory))

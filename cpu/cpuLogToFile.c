@@ -72,6 +72,8 @@ NUMA node0 CPU(s):   0-31
 
 #include <sys/time.h>
 
+#include <signal.h>
+
 #define AMD_MSR_PWR_UNIT 0xC0010299
 #define AMD_MSR_CORE_ENERGY 0xC001029A
 #define AMD_MSR_PACKAGE_ENERGY 0xC001029B
@@ -89,6 +91,13 @@ static int package_map[MAX_PACKAGES];
 
 const int DELAY_UNIT = 1000000; //microsecond 
 const unsigned int NUM_NODES = 2;
+
+
+void exitfunc(int sig)
+{
+    _exit(0);
+}
+
 
 double secondsSince(struct timeval *startTime) {
   struct timeval currentTime;
@@ -191,18 +200,22 @@ get more info about cpu core die and package
 
 
 int main(int argc, char **argv) {
+	
+	signal(SIGALRM, exitfunc);
+    alarm(atoi(argv[3]));
+
 	struct timeval start;
 	gettimeofday(&start, NULL);
 
-	if (argc != 3){
-		fprintf(stderr, "Usage: %s [sampling rate (HZ)] [output filename]\n", argv[0]);
+	if (argc != 4){
+		fprintf(stderr, "Usage: %s [sampling rate (HZ)] [output filename] [measuring time]\n", argv[0]);
 	}
 	unsigned int delay_us = DELAY_UNIT / atoi(argv[1]);
 	char filename[512];
-	char hostname[9];
-	hostname[8] = NULL;
-	gethostname(hostname, 8);
-	snprintf(filename, 512, "%s_CPU-%s.csv", hostname, argv[2]);
+	// char hostname[9];
+	// hostname[8] = NULL;
+	// gethostname(hostname, 8);
+	snprintf(filename, 512, "CPU_%s.csv", argv[2]);
 	FILE *outputFile = fopen(filename, "w");
 	if (outputFile == NULL) {
 		fprintf(stderr, "Unable to open output file.\n");
@@ -258,7 +271,6 @@ int main(int argc, char **argv) {
 	//printf("Time_unit:%g, Energy_unit: %g, Power_unit: %g\n", time_unit_d, energy_unit_d, power_unit_d);
 	fprintf(outputFile, "Time_unit:%g, Energy_unit: %g, Power_unit: %g\n", time_unit_d, energy_unit_d, power_unit_d);
 
-	printf("Measuring cpu power. Press Ctrl+C to stop\n");
 	while(1){
 		//usleep(delay_us);
 		//usleep(DELAY_UNIT);

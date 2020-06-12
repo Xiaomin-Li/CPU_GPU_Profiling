@@ -1,4 +1,7 @@
 *.csv 
 cpu/*.csv
 gpu/*.csv
+*.txt
+cpu/*.txt
+gpu/*.txt
 

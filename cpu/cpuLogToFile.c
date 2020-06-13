@@ -25,7 +25,7 @@
  * gcc -o cpuLogToFile cpuLogToFile.c -lm
  * To run: 
  * add msr to kernal mode: sudo modprobe msr 
- * sudo ./cpuLogToFile [sampleing Rate] [filename]
+ * sudo ./cpuLogToFile [sampleing Rate] [filename] [sampling time]
  * 
 */
 
@@ -174,7 +174,6 @@ static int * read_stat() {
 	}
 
 	fgets(file_text, 100, filestream);
-	//printf("%s", file_text);
 
     char *ptr = strtok(file_text, delim);
     int count = 0;
@@ -191,7 +190,6 @@ static int * read_stat() {
 		ptr = strtok(NULL, delim);
         count++;
 	}
-    //printf("Total cpu: %d, current cpu: %d\n", cpu_usage[1], cpu_usage[0]);
 
     fclose(filestream);
 	return cpu_usage;
@@ -224,9 +222,6 @@ int main(int argc, char **argv) {
 	}
 	unsigned int delay_us = DELAY_UNIT / atoi(argv[1]);
 	char filename[512];
-	// char hostname[9];
-	// hostname[8] = NULL;
-	// gethostname(hostname, 8);
 	snprintf(filename, 512, "CPU_%s.csv", argv[2]);
 	FILE *outputFile = fopen(filename, "w");
 	if (outputFile == NULL) {
@@ -239,12 +234,9 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	//Print the column labels to the output file.
-	//fprintf(outputFile, "CPU Power(W), Time(S)\n");
 	detect_packages();
 	fprintf(outputFile, "Detected %d cores in %d packages\n\n",
 		total_cores,total_packages);
-	//rapl_msr_amd_core(delay_us);
 	unsigned int time_unit, energy_unit, power_unit;
 	double time_unit_d, energy_unit_d, power_unit_d;
 	
@@ -269,7 +261,6 @@ int main(int argc, char **argv) {
 	}
 	
 	int core_energy_units = read_msr(fd[0], AMD_MSR_PWR_UNIT);
-	//printf("Core energy units: %x\n",core_energy_units);
 	fprintf(outputFile, "Core energy units: %x\n",core_energy_units);
 	//%x	Unsigned hexadecimal integer
 	//core_energy_unit is the variable that contain time, energy and power infomation 
@@ -277,19 +268,14 @@ int main(int argc, char **argv) {
 	time_unit = (core_energy_units & AMD_TIME_UNIT_MASK) >> 16;
 	energy_unit = (core_energy_units & AMD_ENERGY_UNIT_MASK) >> 8;
 	power_unit = (core_energy_units & AMD_POWER_UNIT_MASK);
-	//printf("Time_unit:%d, Energy_unit: %d, Power_unit: %d\n", time_unit, energy_unit, power_unit);
 	fprintf(outputFile, "Time_unit:%d, Energy_unit: %d, Power_unit: %d\n", time_unit, energy_unit, power_unit);
 	
-	//why we need to do this? 
 	time_unit_d = pow(0.5,(double)(time_unit));
 	energy_unit_d = pow(0.5,(double)(energy_unit));
 	power_unit_d = pow(0.5,(double)(power_unit));
-	//printf("Time_unit:%g, Energy_unit: %g, Power_unit: %g\n", time_unit_d, energy_unit_d, power_unit_d);
 	fprintf(outputFile, "Time_unit:%g, Energy_unit: %g, Power_unit: %g\n", time_unit_d, energy_unit_d, power_unit_d);
 
 	while(1){
-		//usleep(delay_us);
-		//usleep(DELAY_UNIT);
 		int core_energy_raw = 0;
 		int package_raw = 0;
 		
@@ -302,10 +288,10 @@ int main(int argc, char **argv) {
 			package[i] = package_raw * energy_unit_d;
 		}
 
+		// Read whole cpu usage 
 		cpu_usage = read_stat();
 
 		usleep(delay_us);
-		//usleep(DELAY_UNIT);
 		for (int i = 0; i < total_cores/2; i++) {
 			core_energy_raw = read_msr(fd[i], AMD_MSR_CORE_ENERGY);
 			package_raw = read_msr(fd[i], AMD_MSR_PACKAGE_ENERGY);
@@ -323,12 +309,10 @@ int main(int argc, char **argv) {
 			double diff_package = (package_delta[i]- package[i]) / (1 / atoi(argv[1])); 
 			sum_core += diff_core;
 			avg_package += diff_package;
-			//printf("Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i])*10);
 			fprintf(outputFile, "Core %d, energy used: %gW, Package: %gW\n", i, diff_core, diff_package);
 		}
 
 		cpu_percent = 100 * (cpu_usage_delta[0] - cpu_usage[0]) / (cpu_usage_delta[1] - cpu_usage[1]); 
-		//printf("Core sum: %gW, Time: %f\n", sum, secondsSince(&start));
 		fprintf(outputFile, "Core sum: %gW, CPU average power: %gW, CPU usage: %f %%, Time: %f\n", sum_core, avg_package/(total_cores/2), cpu_percent, secondsSince(&start));
 	}
 	free(core_energy);

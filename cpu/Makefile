@@ -1,13 +1,14 @@
+
 CC=gcc 
 LDFLAGS=-lm
 
 SOURCES=cpuLogToFile.c
-OBJS= $(SOURCES:.c=.o)
-BINARIES= $(SOURCES:.c=)
+OBJS= $(SOURCES:.c=)
 
-all: $(SOURCES) $(BINARIES)
+cpuLogToFile:
+	${CC} ${SOURCES} -o ${OBJS} ${LDFLAGS}
 
 
 clean: 
-	$(RM) $(OBJS) $(BINARIES)
+	-rm -f cpuLogToFile 
 

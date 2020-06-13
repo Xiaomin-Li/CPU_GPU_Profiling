@@ -32,7 +32,7 @@
 */
 
 //compile 
-//nvcc -I../include -O3 -w k20LoggerToFile.cu -o gpuToFIle -L/usr/lib64/nvidia -lnvidia-ml
+//nvcc -I../include -O3 -w gpuLogToFile.cu -o gpuToFile -L/usr/lib64/nvidia -lnvidia-ml
 //only used for rainbow-panda server which has four devices 
 
 #include <stdio.h>
@@ -41,10 +41,6 @@
 #include <sys/types.h>
 #include <signal.h>
 #include "nvml.h"
-
-//#include <windows.h>
-
-//#include "marcher.h"
 
 #define DEVICE0 0
 #define DEVICE1 1

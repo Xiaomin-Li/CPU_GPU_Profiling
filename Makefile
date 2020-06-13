@@ -1,6 +1,7 @@
 all:
 	cd cpu; make
 	cd gpu; make
+	
 install:
 	cd cpu; ./install.sh
 	cd gpu; ./install.sh

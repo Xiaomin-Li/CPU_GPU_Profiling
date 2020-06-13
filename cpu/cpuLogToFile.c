@@ -17,44 +17,17 @@
  * This program is based on rapl-read:
  * https://github.com/deater/uarch-configure/tree/master/rapl-read
  * 
+ */
+
+
+/*
  * compile with:
  * gcc -o cpuLogToFile cpuLogToFile.c -lm
  * To run: 
  * add msr to kernal mode: sudo modprobe msr 
  * sudo ./cpuLogToFile [sampleing Rate] [filename]
  * 
- */
-/*
-Ryzen architecture 
-Architecture:        x86_64
-CPU op-mode(s):      32-bit, 64-bit
-Byte Order:          Little Endian
-CPU(s):              32
-On-line CPU(s) list: 0-31
-Thread(s) per core:  2
-Core(s) per socket:  16
-Socket(s):           1
-NUMA node(s):        1
-Vendor ID:           AuthenticAMD
-CPU family:          23
-Model:               8
-Model name:          AMD Ryzen Threadripper 2950X 16-Core Processor
-Stepping:            2
-CPU MHz:             1891.351
-CPU max MHz:         3500.0000
-CPU min MHz:         2200.0000
-BogoMIPS:            6986.02
-Virtualization:      AMD-V
-L1d cache:           32K
-L1i cache:           64K
-L2 cache:            512K
-L3 cache:            8192K
-NUMA node0 CPU(s):   0-31
 */
-
-
-//Jan 08 2020 
-//modified to measure the AMD Ryzen CPU chip with different time internal also input results to csv file. 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -174,7 +147,7 @@ static long long read_msr(int fd, unsigned int which) {
 
 	uint64_t data;
 	//
-	if ( pread(fd, &data, sizeof data, which) != sizeof data ) {
+	if (pread(fd, &data, sizeof data, which) != sizeof data ) {
 		perror("rdmsr:pread");
 		exit(127);
 	}
@@ -184,6 +157,45 @@ static long long read_msr(int fd, unsigned int which) {
 	//On success, the number of bytes read or written is returned (zero indicates that nothing was written, in the case of pwrite(), 
 	//or end of file, in the case of pread()), or -1 on error, in which case errno is set to indicate the error.
 	return (long long)data;
+}
+
+
+static int * read_stat() {
+
+	FILE *filestream;
+	char file_text[100];
+	int *cpu_usage = (int*)malloc(sizeof(int) * 2);
+    char delim[] = " ";
+    
+	filestream = fopen("/proc/stat", "r");
+	if ( filestream < 0 ) {
+		fprintf(stderr, "fail to open /proc/stat\n");
+			exit(127);
+	}
+
+	fgets(file_text, 100, filestream);
+	//printf("%s", file_text);
+
+    char *ptr = strtok(file_text, delim);
+    int count = 0;
+    
+    while(ptr != NULL)
+	{
+        if (count >= 1) {
+            cpu_usage[1] += atoi(ptr);
+        }
+        if (count >=1 && count <=3) {
+            cpu_usage[0] += atoi(ptr);
+        }
+		
+		ptr = strtok(NULL, delim);
+        count++;
+	}
+    //printf("Total cpu: %d, current cpu: %d\n", cpu_usage[1], cpu_usage[0]);
+
+    fclose(filestream);
+	return cpu_usage;
+
 }
 
 
@@ -241,6 +253,10 @@ int main(int argc, char **argv) {
 
 	double *package = (double*)malloc(sizeof(double)*total_cores/2);
 	double *package_delta = (double*)malloc(sizeof(double)*total_cores/2);
+
+	int *cpu_usage = (int*)malloc(sizeof(int) * 2);
+	int *cpu_usage_delta = (int*)malloc(sizeof(int) * 2);
+	double cpu_percent;
 	
 	//total_cores=32 malloc new double arrays that size are equals total_cores/2
 
@@ -276,6 +292,7 @@ int main(int argc, char **argv) {
 		//usleep(DELAY_UNIT);
 		int core_energy_raw = 0;
 		int package_raw = 0;
+		
 		// Read per core energy values
 		for (int i = 0; i < total_cores/2; i++) {
 			core_energy_raw = read_msr(fd[i], AMD_MSR_CORE_ENERGY);
@@ -284,6 +301,8 @@ int main(int argc, char **argv) {
 			core_energy[i] = core_energy_raw * energy_unit_d;
 			package[i] = package_raw * energy_unit_d;
 		}
+
+		cpu_usage = read_stat();
 
 		usleep(delay_us);
 		//usleep(DELAY_UNIT);
@@ -295,6 +314,8 @@ int main(int argc, char **argv) {
 			package_delta[i] = package_raw * energy_unit_d;
 		}
 
+		cpu_usage_delta = read_stat();
+
 		double sum_core = 0;
 		double avg_package = 0;
 		for(int i = 0; i < total_cores/2; i++) {
@@ -305,14 +326,18 @@ int main(int argc, char **argv) {
 			//printf("Core %d, energy used: %gW, Package: %gW\n", i, diff,(package_delta[i]-package[i])*10);
 			fprintf(outputFile, "Core %d, energy used: %gW, Package: %gW\n", i, diff_core, diff_package);
 		}
+
+		cpu_percent = 100 * (cpu_usage_delta[0] - cpu_usage[0]) / (cpu_usage_delta[1] - cpu_usage[1]); 
 		//printf("Core sum: %gW, Time: %f\n", sum, secondsSince(&start));
-		fprintf(outputFile, "Core sum: %gW, CPU average power: %gW, Time: %f\n", sum_core, avg_package/(total_cores/2), secondsSince(&start));
+		fprintf(outputFile, "Core sum: %gW, CPU average power: %gW, CPU usage: %f %%, Time: %f\n", sum_core, avg_package/(total_cores/2), cpu_percent, secondsSince(&start));
 	}
 	free(core_energy);
 	free(core_energy_delta);
 	free(package);
 	free(package_delta);
 	free(fd);
+	free(cpu_usage);
+	free(cpu_usage_delta);
 
 	return 0;
 }

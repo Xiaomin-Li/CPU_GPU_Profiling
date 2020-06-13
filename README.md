@@ -21,7 +21,7 @@
   * e.g. ./gpu/gpuLogToFile 1 test      (sampling time is 1/sec, filename is test)
 *gpuLogToFile can not measure gpu utilization on RTX GPU. Since the NVML library get device utilization api only supports fermi and quadro architrcture cards.*
 
-2. Use python script as gpu profiling tool*
+2. Use python script as gpu profiling tool
 * python gpuProfiling.py [sampling interval] [filename] [sampling time] 
   * e.g. python gpuProfiling.py 1 test 10     (sampling time is 1/sec, filename is test, sample for 10 seconds)
   

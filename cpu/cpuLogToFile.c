@@ -274,7 +274,8 @@ int main(int argc, char **argv) {
 	energy_unit_d = pow(0.5,(double)(energy_unit));
 	power_unit_d = pow(0.5,(double)(power_unit));
 	fprintf(outputFile, "Time_unit:%g, Energy_unit: %g, Power_unit: %g\n", time_unit_d, energy_unit_d, power_unit_d);
-
+	for(int i = 0; i < total_cores / 2; i++) fprintf(outputFile, "Core%d_Power(W), ",i);
+	fprintf(outputFile, "Core_power_sum(W), CPU_power(W), CPU_usage(%%), Time(s)\n");
 	while(1){
 		int core_energy_raw = 0;
 		int package_raw = 0;
@@ -309,11 +310,13 @@ int main(int argc, char **argv) {
 			double diff_package = (package_delta[i]- package[i]) / (1 / atoi(argv[1])); 
 			sum_core += diff_core;
 			avg_package += diff_package;
-			fprintf(outputFile, "Core %d, energy used: %gW, Package: %gW\n", i, diff_core, diff_package);
+			//fprintf(outputFile, "Core %d, energy used: %gW, Package: %gW\n", i, diff_core, diff_package);
+			fprintf(outputFile, "%g, ", diff_core);
 		}
 
 		cpu_percent = 100 * (cpu_usage_delta[0] - cpu_usage[0]) / (cpu_usage_delta[1] - cpu_usage[1]); 
-		fprintf(outputFile, "Core sum: %gW, CPU average power: %gW, CPU usage: %f %%, Time: %f\n", sum_core, avg_package/(total_cores/2), cpu_percent, secondsSince(&start));
+		//fprintf(outputFile, "Core sum: %gW, CPU average power: %gW, CPU usage: %f %%, Time: %f\n", sum_core, avg_package/(total_cores/2), cpu_percent, secondsSince(&start));
+		fprintf(outputFile, "%g, %g, %f, %f\n", sum_core, avg_package/(total_cores/2), cpu_percent, secondsSince(&start));
 	}
 	free(core_energy);
 	free(core_energy_delta);

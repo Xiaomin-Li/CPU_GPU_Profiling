@@ -1,5 +1,5 @@
 import py3nvml.nvidia_smi as nvml
-import datetime  
+import datetime
 import time
 import sys
 import signal
@@ -8,7 +8,7 @@ def getGPUInfo():
     nvml.nvmlInit()
     num_gpus = nvml.nvmlDeviceGetCount()
     time_interval = 1 / float(sys.argv[1])
-    filename = 'GPU_' + sys.argv[2] + '.csv' 
+    filename = 'GPU_' + sys.argv[2] + '.csv'
 
     file1 = open(filename,"w")
 
@@ -24,7 +24,9 @@ def getGPUInfo():
             power_limit *= 0.001
             memory_info = nvml.nvmlDeviceGetMemoryInfo(handle)
             temp = nvml.nvmlDeviceGetTemperature(handle, nvml.NVML_TEMPERATURE_GPU)
-            file1.write('{}, gpu{}, {}%. {}%, {}Mib/{}Mib, {}W/{}W, {}C\n'.format(datetime.datetime.now().time(), i, util.gpu, util.memory, memory_info.used >> 20, memory_info.total >> 20, power, power_limit, temp))
+            clock = nvml.nvmlDeviceGetClockInfo(handle, 1)
+            print(clock)
+            file1.write('{}, gpu{}, {}%. {}%, {}Mib/{}Mib, {}W/{}W, {}C, {}mz\n'.format(datetime.datetime.now().time(), i, util.gpu, util.memory, memory_info.used >> 20, memory_info.total >> 20, power, power_limit, temp, clock))
 
         time.sleep(time_interval)
     file1.close()

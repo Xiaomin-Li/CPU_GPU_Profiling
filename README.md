@@ -9,6 +9,10 @@
 ### To run 
 #### make sure msr file readable 
 * sudo modprobe msr
+
+#### Run with user program 
+* add user program command into powerlog file 
+  * The profiling tool will be terminated if timeout or the user program returned or by keyboard 'Ctrl + C' 
   
 #### Run cpu log file seperately:
 * cd cpu

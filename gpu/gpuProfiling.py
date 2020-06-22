@@ -13,7 +13,7 @@ def getGPUInfo():
     file1 = open(filename,"w")
 
     file1.write('Number of GPUs {}\n'.format(num_gpus))
-    file1.write('Time, device, gpu_util(%), gpu_mem(%), memory_used/total(Mib), power_current/limit(W), temperature(C), Frequency(mHz)\n')
+    file1.write('Time, device, gpu_util(%), gpu_mem(%), memory_used/total(Mib), power_current/limit(W), temperature(C), Frequency(MHz)\n')
     while True:
         for i in range(num_gpus):
             handle = nvml.nvmlDeviceGetHandleByIndex(i)

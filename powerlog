@@ -18,9 +18,20 @@
 
 echo start measuring 
 date
+
+
+trap 'kill %1, kill %2' SIGINT
 ./cpu/cpuLogToFile $1 $2 $3 &  
 
-python ./gpu/gpuProfiling.py $1 $2 $3 & 
+python ./gpu/gpuProfiling.py $1 $2 $3 &
+
+#user program command goes here 
+python ./sleep.py 
+
+sudo pkill cpuLogToFile
+sudo pkill -f ./gpu/gpuProfiling.py
+
+#The measurement will end when $3 time out or user program returns or terminated by the keyboard 'Ctrl + C' 
 
 date
 echo end measuring 

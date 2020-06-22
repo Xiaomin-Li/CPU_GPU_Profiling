@@ -10,7 +10,8 @@ def getGPUInfo():
     time_interval = 1 / float(sys.argv[1])
     filename = 'GPU_' + sys.argv[2] + '.csv'
 
-    file1 = open(filename,"w")
+    # 0 means buffer size is 0, auto flush buffer to the file 
+    file1 = open(filename,"w", 0)
 
     file1.write('Number of GPUs {}\n'.format(num_gpus))
     file1.write('Time, device, gpu_util(%), gpu_mem(%), memory_used/total(Mib), power_current/limit(W), temperature(C), Frequency(MHz)\n')
